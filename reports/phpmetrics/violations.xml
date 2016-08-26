@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="@package_version@" timestamp="2016-08-26T15:53:48+05:30">
+  <file name="/home/ansh154/calculator/calculator/src/phpreboot/myclass/Calculator.php">
+    <violation beginline="1" endline="24" rule="maintainabilityIndex" ruleset="maintainabilityIndex" externalInfoUrl="http://phpmetrics.org/documentation/index.html" priority="1">the "maintainabilityIndex" value (67.33) of "calculator/src/phpreboot/myclass/Calculator.php" is incorrect. The configured maintainabilityIndex threshold is 0, 69, 85</violation>
+    <violation beginline="1" endline="24" rule="commentWeight" ruleset="commentWeight" externalInfoUrl="http://phpmetrics.org/documentation/index.html" priority="1">the "commentWeight" value (0) of "calculator/src/phpreboot/myclass/Calculator.php" is incorrect. The configured commentWeight threshold is 36, 38, 41</violation>
+    <violation beginline="1" endline="24" rule="instability" ruleset="instability" externalInfoUrl="http://phpmetrics.org/documentation/index.html" priority="1">the "instability" value (1) of "calculator/src/phpreboot/myclass/Calculator.php" is incorrect. The configured instability threshold is 1, 0.95, 0.45</violation>
+    <violation beginline="1" endline="24" rule="cyclomaticComplexity" ruleset="cyclomaticComplexity" externalInfoUrl="http://phpmetrics.org/documentation/index.html" priority="3">the "cyclomaticComplexity" value (4) of "calculator/src/phpreboot/myclass/Calculator.php" is incorrect. The configured cyclomaticComplexity threshold is 10, 6, 2</violation>
+  </file>
+</pmd>

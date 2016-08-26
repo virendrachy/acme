@@ -1,0 +1,11 @@
+
+FILE: ...sh154/calculator/calculator/src/phpreboot/myclass/Calculator.php
+----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 6 | WARNING | Function's cyclomatic complexity (4) exceeds 3;
+   |         | consider refactoring the function
+----------------------------------------------------------------------
+
+Time: 15ms; Memory: 6Mb
+

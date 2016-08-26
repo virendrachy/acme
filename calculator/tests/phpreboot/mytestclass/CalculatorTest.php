@@ -39,7 +39,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->calculator->add('1,a', 'Invalid parameter do not throw exception');
     }
-    public function  testAddWithNonStringParameterThrowsException()
+    public function testAddWithNonStringParameterThrowsException()
     {
          $this->calculator->add(5, 'Integer parameter do not throw error');
     }

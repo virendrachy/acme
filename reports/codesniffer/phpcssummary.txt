@@ -1,0 +1,13 @@
+
+PHP CODE SNIFFER VIOLATION SOURCE SUMMARY
+----------------------------------------------------------------------
+SOURCE                                                           COUNT
+----------------------------------------------------------------------
+Generic.Metrics.CyclomaticComplexity.TooHigh                     2
+PSR1.Files.SideEffects.FoundWithSymbols                          1
+----------------------------------------------------------------------
+A TOTAL OF 3 SNIFF VIOLATIONS WERE FOUND IN 2 SOURCES
+----------------------------------------------------------------------
+
+Time: 19ms; Memory: 6Mb
+
