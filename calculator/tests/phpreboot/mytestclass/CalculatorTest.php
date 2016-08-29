@@ -20,8 +20,6 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     public function testAddReturnsAnInteger()
     {
         $result = $this->calculator->add();
-
-        $result = $this->calculator->add();
         $this->assertSame(0, $result, 'Empty string on add do not return 0');
     }
     public function testAddWithSingleNumberReturnsSameNumber()
@@ -32,15 +30,46 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     public function testAddWithTwoParametersReturnsTheirSum()
     {
         $result = $this->calculator->add('2,4');
-
         $this->assertSame(6, $result, 'Add with two parameter do not returns correct sum');
     }
+
+    /*
+     * @expectedException \InvalidArgumentException
+     */
     public function testAddWithNonNumbersThrowException()
     {
-        $this->calculator->add('1,a', 'Invalid parameter do not throw exception');
+        $this->calculator->add('1,b', 'Invalid parameter do not throw exception');
+
     }
-    public function testAddWithNonStringParameterThrowsException()
+    public function testAddWithMaxNumbers()
     {
-         $this->calculator->add(5, 'Integer parameter do not throw error');
+        $result = $this->calculator->add('2,1,1001,2');
+        $this->assertSame(5, $result, 'value is more then 1000 not included');
+    }
+
+    public function testAddWithLessThenZeroNumbers()
+    {
+        $result = $this->calculator->add('2,-1');
+        $this->assertSame('error negitive number not allowed', $result, 'error negitive number is not allowed');
+    }
+
+    public function testMultipleReturnsAnInteger()
+    {
+        $result = $this->calculator->multiple();
+        $this->assertSame(0, $result, 'Empty string on add do not return 0');
+    }
+    public function testMultipleWithSingleNumberReturnsSameNumber()
+    {
+        $result = $this->calculator->multiple('3');
+        $this->assertSame(3, $result, 'multiply with single number do not returns same number');
+    }
+    public function testMultipleWithTwoParametersReturnsTheirvalue()
+    {
+        $result = $this->calculator->multiple('2,4');
+        $this->assertSame(8, $result, 'multiply with two parameter do not returns correct result');
+    }
+    public function testMultipleWithNonNumbersThrowException()
+    {
+        $this->calculator->multiple('1,s', 'Invalid parameter do not throw exception');
     }
 }
