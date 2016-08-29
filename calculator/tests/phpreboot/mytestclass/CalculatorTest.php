@@ -33,12 +33,12 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(6, $result, 'Add with two parameter do not returns correct sum');
     }
 
-    /*
-     * @expectedException \InvalidArgumentException
-     */
+     /**
+      * @expectedException \InvalidArgumentException
+      */
     public function testAddWithNonNumbersThrowException()
     {
-        $this->calculator->add('1,b', 'Invalid parameter do not throw exception');
+        $this->calculator->add('1,b', 'Parameters string must contain numbers');
 
     }
     public function testAddWithMaxNumbers()
@@ -68,8 +68,12 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $result = $this->calculator->multiple('2,4');
         $this->assertSame(8, $result, 'multiply with two parameter do not returns correct result');
     }
+    
+     /**
+      * @expectedException \InvalidArgumentException
+      */
     public function testMultipleWithNonNumbersThrowException()
     {
-        $this->calculator->multiple('1,s', 'Invalid parameter do not throw exception');
+        $this->calculator->multiple('1,b', 'Invalid parameter do not throw exception');
     }
 }

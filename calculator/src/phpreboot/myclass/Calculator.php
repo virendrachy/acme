@@ -15,7 +15,7 @@ class Calculator
 
         $numbersArray = explode(",", $myargs);
         if (array_filter($numbersArray, 'is_numeric') !== $numbersArray) {
-            throw new \InvalidArgumentException('Invalid parameter do not throw exception');
+            throw new \InvalidArgumentException('Parameters string must contain numbers');
         }
         $sanitizedData = array();
 
@@ -56,15 +56,19 @@ class Calculator
         return $sanitizedData;
     }
 
-    public function multiple()
+    public function multiple($myargs='')
     {
-        $myargs = func_get_args();
+        $myargs_array = func_get_args();
 
         if (empty($myargs)) {
             return 0;
         }
-        if (isset($myargs[0])) {
-            $sanitizedData = $this->getIntArrayFromStr($myargs[0]);
+        $numbersArray = explode(",", $myargs);
+        if (array_filter($numbersArray, 'is_numeric') !== $numbersArray) {
+            throw new \InvalidArgumentException('Parameters string must contain numbers');
+        }
+        if (isset($myargs_array[0])) {
+            $sanitizedData = $this->getIntArrayFromStr($myargs_array[0]);
         }
 
         $result = 1;
