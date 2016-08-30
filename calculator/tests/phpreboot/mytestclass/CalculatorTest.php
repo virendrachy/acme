@@ -32,8 +32,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $result = $this->calculator->add('2,4');
         $this->assertSame(6, $result, 'Add with two parameter do not returns correct sum');
     }
-
-     /**
+    /*
       * @expectedException \InvalidArgumentException
       */
     public function testAddWithNonNumbersThrowException()
@@ -50,9 +49,13 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     public function testAddWithLessThenZeroNumbers()
     {
         $result = $this->calculator->add('2,-1');
-        $this->assertSame('error negitive number not allowed', $result, 'error negitive number is not allowed');
+        $this->assertSame("negitive number(-1) not allowed", $result, 'negitive');
     }
-
+    public function testAddMUltipleInputWithLessThenZeroNumbers()
+    {
+        $result = $this->calculator->add('2,-1,-6');
+        $this->assertSame("negitive number(-1,-6) not allowed", $result, 'negitive');
+    }
     public function testMultipleReturnsAnInteger()
     {
         $result = $this->calculator->multiple();
@@ -68,12 +71,71 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $result = $this->calculator->multiple('2,4');
         $this->assertSame(8, $result, 'multiply with two parameter do not returns correct result');
     }
-    
-     /**
+    /*
       * @expectedException \InvalidArgumentException
       */
     public function testMultipleWithNonNumbersThrowException()
     {
         $this->calculator->multiple('1,b', 'Invalid parameter do not throw exception');
+    }
+    public function testMultipleWithNegitiveNumbers()
+    {
+        $result = $this->calculator->multiple('2,-3');
+        $this->assertSame("negitive number(-3) not allowed", $result, 'Negative');
+    }
+    public function testMultipleInputWithLessThenZeroNumbers()
+    {
+        $result = $this->calculator->multiple('2,-1,-6');
+        $this->assertSame("negitive number(-1,-6) not allowed", $result, 'negitive');
+    }
+    public function testMultipleInputWithMoreThenZeroNumbers()
+    {
+        $result = $this->calculator->multiple('2,2,1,4,1,4');
+        $this->assertSame(64, $result, 'More then one value');
+    }
+    public function testAddInputWithMoreThenZeroNumbers()
+    {
+        $result = $this->calculator->add('2,,1,4,1,4');
+        $this->assertSame(12, $result, 'More then one value');
+    }
+    public function testMultipleInputWithNewLineNumbers()
+    {
+        $result = $this->calculator->multiple('2/n,4');
+        $this->assertSame(8, $result, 'More then one value');
+    }
+    public function testAddInputWithNewLineNumbers()
+    {
+        $result = $this->calculator->add('2/n,3');
+        $this->assertSame(5, $result, 'More then one value');
+    }
+    public function testMultipleInputWithNewLinewithStringNumbers()
+    {
+        $result = $this->calculator->multiple('2/n/n,3//');
+        $this->assertSame(6, $result, 'More then one value');
+    }
+    public function testAddInputWithNewLineStringNumbers()
+    {
+        $result = $this->calculator->add('2/n/n,3//');
+        $this->assertSame(5, $result, 'More then one value');
+    }
+    public function testMultipleInputWithNewLinewithComplexStringNumbers()
+    {
+        $result = $this->calculator->multiple('//,//2/n/n,3//');
+        $this->assertSame(6, $result, 'More then one value');
+    }
+    public function testAddInputWithNewLineComplexStringNumbers()
+    {
+        $result = $this->calculator->add('//,//2/n/n,3//');
+        $this->assertSame(5, $result, 'More then one value');
+    }
+    public function testMultipleInputWithSuperComplexStringNumbers()
+    {
+        $result = $this->calculator->multiple('//;//;2/n/n,3//');
+        $this->assertSame(6, $result, 'More then one value');
+    }
+    public function testAddInputWithSuperComplexStringNumbers()
+    {
+        $result = $this->calculator->add('//;//;2/n/n,3//');
+        $this->assertSame(5, $result, 'More then one value');
     }
 }
