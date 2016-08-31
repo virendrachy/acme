@@ -11,7 +11,6 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->calculator = new Calculator();
     }
-
     public function tearDown()
     {
         $this->calculator = null;
@@ -32,29 +31,22 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $result = $this->calculator->add('2,4');
         $this->assertSame(6, $result, 'Add with two parameter do not returns correct sum');
     }
-    /*
-      * @expectedException \InvalidArgumentException
-      */
-    public function testAddWithNonNumbersThrowException()
-    {
-        $this->calculator->add('1,b', 'Parameters string must contain numbers');
-
-    }
     public function testAddWithMaxNumbers()
     {
         $result = $this->calculator->add('2,1,1001,2');
         $this->assertSame(5, $result, 'value is more then 1000 not included');
     }
-
     public function testAddWithLessThenZeroNumbers()
     {
+        $this->calculator->displayNegativeNumbers = false;
         $result = $this->calculator->add('2,-1');
-        $this->assertSame("negitive number(-1) not allowed", $result, 'negitive');
+        $this->assertSame("error negitive number not allowed", $result, 'negitive');
     }
     public function testAddMUltipleInputWithLessThenZeroNumbers()
     {
+        $this->calculator->displayNegativeNumbers = true;
         $result = $this->calculator->add('2,-1,-6');
-        $this->assertSame("negitive number(-1,-6) not allowed", $result, 'negitive');
+        $this->assertSame("negetive number(-1,-6) not allowed", $result, 'negitive');
     }
     public function testMultipleReturnsAnInteger()
     {
@@ -70,13 +62,6 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $result = $this->calculator->multiple('2,4');
         $this->assertSame(8, $result, 'multiply with two parameter do not returns correct result');
-    }
-    /*
-      * @expectedException \InvalidArgumentException
-      */
-    public function testMultipleWithNonNumbersThrowException()
-    {
-        $this->calculator->multiple('1,b', 'Invalid parameter do not throw exception');
     }
     public function testMultipleWithNegitiveNumbers()
     {
